@@ -1,0 +1,509 @@
+/* Import a futuristic font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* --- Global & Body Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #0d0d1a; /* Dark blue/purple space background */
+    color: #e0e0e0;
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background: rgba(10, 10, 20, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 5%;
+    border-bottom: 2px solid #ff00ff; /* Neon pink border */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00ffcc; /* Neon cyan */
+    text-shadow: 0 0 10px #00ffcc;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+nav a:hover {
+    color: #00ffcc;
+    text-shadow: 0 0 8px #00ffcc;
+}
+
+/* --- Main Content & Hero Section --- */
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 15px #ff00ff, 0 0 25px #ff00ff; /* Neon pink glow */
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: #00ffcc;
+    margin-bottom: 2rem;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #00ffcc, #ff00ff);
+    color: #0d0d1a;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 204, 0.3);
+}
+
+/* --- Forms --- */
+.form-container {
+    background: rgba(10, 10, 20, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 2px solid #00ffcc;
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
+    width: 100%;
+    max-width: 450px;
+    margin-top: 2rem;
+}
+
+.form-container h2 {
+    color: #00ffcc;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 5px #00ffcc;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+/* Hides the icons (🏆, 🎮, 📱, etc.) from all forms */
+.form-group i {
+    display: none;
+}
+
+/* Adjusted padding for login/register forms after removing icons */
+.form-container input {
+    width: 100%;
+    padding: 15px; /* Formerly had 45px left padding for icon */
+    background: #1a1a3a;
+    border: 2px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-container input:focus {
+    outline: none;
+    border-color: #00ffcc;
+}
+
+.form-container button {
+    width: 100%;
+}
+
+/* --- Dashboard --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 2rem;
+}
+
+@media (min-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.card {
+    background: rgba(10, 10, 20, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #ff00ff;
+}
+
+.card h3 {
+    color: #ff00ff;
+    margin-bottom: 1rem;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 1.5rem 5%;
+    margin-top: auto;
+    background: rgba(10, 10, 20, 0.8);
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #00ffcc;
+}
+/* ======== NEW DASHBOARD SHOWCASE STYLES ======== */
+
+/* --- Dashboard Hero Section --- */
+.hero-dashboard {
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(rgba(13, 13, 26, 0.7), rgba(13, 13, 26, 0.9)), url(https://via.placeholder.com/1920x1080/000000/FFFFFF?text=BGMI+Action+Shot) no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.hero-dashboard h1 {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 15px #00ffcc;
+}
+
+.hero-dashboard p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+/* --- Main Dashboard Content Wrapper --- */
+.dashboard-content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+/* --- Tournament Details Section --- */
+.info-section h2, .spotlight-section h2 {
+    text-align: center;
+    color: #00ffcc;
+    margin-bottom: 2.2rem;
+    font-size: 2rem;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: #1a1a3a;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    border-left: 5px solid #ff00ff;
+}
+
+.stat-card h3 {
+    color: #ff00ff;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.stat-card p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* --- Player & Team Spotlight Section --- */
+.spotlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.player-card, .team-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.player-card:hover, .team-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #00ffcc;
+}
+
+.player-card img, .team-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.player-name, .team-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: #fff;
+    padding: 1rem;
+    font-weight: 700;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* --- Tournament Registration Section --- */
+#tournament-register-section {
+    background: linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 204, 0.1));
+    border: 2px solid #00ffcc;
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.5), 0 0 40px rgba(255, 0, 255, 0.3);
+    padding: 3rem;
+    border-radius: 20px;
+}
+
+.tournament-header {
+    margin-bottom: 2.2rem;
+    text-align: center;
+}
+
+#tournament-register-section h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 8px #00ffcc, 0 0 15px #ff00ff;
+    margin-bottom: 0.8rem;
+}
+
+.tournament-header .tagline {
+    font-size: 1.2rem;
+    color: #00ffcc;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Countdown Timer Styles --- */
+.countdown-wrapper {
+    margin-top: 1.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 1rem;
+    display: inline-block;
+    border: 1px solid #ff00ff;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.countdown-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+}
+
+.countdown-timer {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 10px #00ffcc;
+    letter-spacing: 2px;
+}
+
+.countdown-timer span {
+    color: #ff00ff;
+}
+
+/* --- Larger Tournament Form Inputs & Neon Hover Effect --- */
+#tournament-register-section .form-group {
+    margin-bottom: 2.2rem;
+}
+
+#tournament-register-section #tournamentForm input {
+    padding: 22px 20px; /* Adjusted padding after removing icon */
+    font-size: 1.2rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* For smooth hover */
+}
+
+#tournament-register-section #tournamentForm input:hover {
+    border-color: #00ffcc;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.6), 0 0 5px rgba(255, 0, 255, 0.4);
+}
+/* ======== SCHEDULE/ROADMAP PAGE STYLES ======== */
+
+.schedule-container {
+    position: relative;
+    padding-left: 40px; /* Space for the timeline bar */
+    border-left: 4px solid #333; /* The main timeline bar */
+}
+
+.schedule-stage {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding: 1rem;
+}
+
+/* Creates the circle on the timeline bar for each stage */
+.schedule-stage::before {
+    content: '';
+    position: absolute;
+    left: -50px; /* Position it on top of the border */
+    top: 10px;
+    height: 15px;
+    width: 15px;
+    background-color: #ff00ff; /* Neon pink circle */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+.schedule-stage h3 {
+    color: #00ffcc; /* Neon cyan for the stage title */
+    margin-bottom: 0.5rem;
+}
+
+.stage-details {
+    background: #1a1a3a;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 0.9rem;
+    text-align: left;
+}
+/* ======== FORM INPUT STYLING ======== */
+
+.form-group input {
+    width: 100%;
+    padding: 1rem 1.2rem; /* Increased padding for better feel */
+    margin-bottom: 1.2rem; /* Space between fields */
+    border: 1px solid #333; /* Darker border */
+    border-radius: 8px; /* Slightly more rounded corners */
+    background-color: #1a1a3a; /* Dark background */
+    color: #e0e0e0; /* Light gray text for readability */
+    font-size: 1rem; /* Standard font size */
+    transition: all 0.3s ease; /* Smooth transition for hover/focus effects */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    outline: none; /* Remove default outline */
+}
+
+/* Placeholder text styling */
+.form-group input::placeholder {
+    color: #888; /* Softer placeholder color */
+    opacity: 1; /* Ensure full visibility */
+}
+
+/* Hover effect */
+.form-group input:hover {
+    border-color: #00ffcc; /* Neon cyan border on hover */
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.3); /* Subtle neon glow on hover */
+}
+
+/* Focus effect (when you click on the input field) */
+.form-group input:focus {
+    border-color: #ff00ff; /* Neon pink border on focus */
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5); /* Stronger neon glow on focus */
+    background-color: #2a2a4a; /* Slightly lighter dark background on focus */
+}
+
+/* Adjustments for the form container if needed, to make inputs fit better */
+.form-container {
+    padding: 30px; /* More padding inside the card */
+}
+/* ======== CONTACT PAGE STYLES ======== */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+@media (min-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}
+
+.contact-details h3 {
+    color: #00ffcc;
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    font-weight: 700;
+}
+
+.contact-form-container h3 {
+    color: #ff00ff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: #1a1a3a;
+    color: #e0e0e0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff00ff;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
