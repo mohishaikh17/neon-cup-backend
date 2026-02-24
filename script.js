@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // UPDATE THIS URL after you host on Render
-    const API_URL = "http://127.0.0.1:8000";
+    const API_URL = "https://neon-cup-backend.onrender.com";
 
     // =================================================================
     // 🧠 CORE LOGIC & PAGE PROTECTION
