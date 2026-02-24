@@ -9,10 +9,12 @@ load_dotenv()
 
 app = FastAPI()
 
-# IMPORTANT: This allows your HTML files to talk to your Python code
+# IMPORTANT: This allows your HTML files (on GitHub Pages or Netlify) 
+# to talk to your Render backend without being blocked.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["*"],  # Allows all websites to connect
+    allow_credentials=True, # Added as requested
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -30,7 +32,6 @@ def home():
 @app.post("/register")
 async def register_user(user_data: dict):
     try:
-        # UPDATED: We now include the password in the insert
         response = supabase.table("profiles").insert({
             "username": user_data["username"],
             "email": user_data["email"],
@@ -44,7 +45,6 @@ async def register_user(user_data: dict):
 @app.post("/login")
 async def login(credentials: dict):
     try:
-        # UPDATED: We check both email AND password
         response = supabase.table("profiles").select("*") \
             .eq("email", credentials["email"]) \
             .eq("password", credentials["password"]) \
@@ -54,12 +54,12 @@ async def login(credentials: dict):
             user = response.data[0]
             return {"message": "Login Successful", "user": user}
         else:
-            # This triggers if the email doesn't exist OR the password is wrong
             raise HTTPException(status_code=401, detail="Invalid email or password")
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
 # 3. GET STATUS ENDPOINT
+# This tells the dashboard if the user has already joined the tournament
 @app.get("/get-status")
 async def get_status(email: str):
     try:
