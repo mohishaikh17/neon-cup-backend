@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         document.getElementById('welcomeMessage').textContent = `Welcome, ${loggedInUser.username}!`;
 
-        // Fetch registration status from the BACKEND instead of localStorage
+        // Fetch registration status from the BACKEND
         async function checkStatus() {
             try {
                 const response = await fetch(`${API_URL}/get-status?email=${loggedInUser.email}`);
@@ -94,8 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
 
             try {
-                // In a real app, you'd send this to the backend. 
-                // For now, we fetch the user profile to verify existence.
                 const response = await fetch(`${API_URL}/login`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -172,7 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const tournamentCountdown = document.getElementById('tournamentCountdown');
     if (tournamentCountdown) {
-        const countDownDate = new Date("Oct 25, 2025 00:00:00").getTime();
+        // Updated to 2026 so it shows as OPEN
+        const countDownDate = new Date("Oct 25, 2026 00:00:00").getTime();
         const x = setInterval(function() {
             const now = new Date().getTime();
             const distance = countDownDate - now;
@@ -180,7 +179,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            tournamentCountdown.innerHTML = `<span>${days}</span>D <span>${hours}</span>H <span>${minutes}</span>M <span>${seconds}</span>S`;
+            
+            if (tournamentCountdown) {
+                tournamentCountdown.innerHTML = `<span>${days}</span>D <span>${hours}</span>H <span>${minutes}</span>M <span>${seconds}</span>S`;
+            }
+            
             if (distance < 0) {
                 clearInterval(x);
                 tournamentCountdown.innerHTML = "REGISTRATION CLOSED";
