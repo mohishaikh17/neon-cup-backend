@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Neon Cup 2025</title>
+    <title>Dashboard - Neon Cup 2026</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Interactive Hover Effects for Spotlight Cards */
+        .player-card a img, .team-card a img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            display: block;
+        }
+        .player-card a img:hover, .team-card a img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00ffcc;
+            border: 2px solid #00ffcc;
+        }
+        .player-card a, .team-card a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body id="dashboard-page">
     <header>
@@ -30,10 +46,9 @@
             <div class="info-section card">
                 <h2>Tournament At a Glance</h2>
                 <div class="details-grid">
-                    
                     <div class="stat-card">
                         <h3>Prize Pool</h3>
-                        <p>₹1000000</p>
+                        <p>199999 </p>
                     </div>
                     <div class="stat-card">
                         <h3>Date</h3>
@@ -47,38 +62,36 @@
                         <h3>Slots</h3>
                         <p>100 Available</p>
                     </div>
-                    
                 </div>
-                   <div id="registration-status-card" class="card">
-                       <h3>Your Registration Status</h3>
-                       <p>You have not registered for the tournament yet. Fill out the form below to join!</p>
-                    </div>
+                <div id="registration-status-card" class="card">
+                    <h3>Your Registration Status</h3>
+                    <p>You have not registered for the tournament yet. Fill out the form below to join!</p>
+                </div>
             </div>
 
             <div class="spotlight-section card">
                 <h2>🌟 Players Spotlight</h2>
                 <div class="spotlight-grid">
                     <div class="player-card">
-                        <img src="https://m.media-amazon.com/images/I/71nZMTugAEL._UF1000,1000_QL80_.jpg" alt="Jonathan Gaming">
+                        <a href="jonathan.html"><img src="https://m.media-amazon.com/images/I/71nZMTugAEL._UF1000,1000_QL80_.jpg" alt="Jonathan Gaming"></a>
                         <div class="player-name">Jonathan</div>
                     </div>
                     <div class="player-card">
-                        <img src="https://in-exstatic-vivofs.vivo.com/bCy1HLzT9bUXp6Mb/IN-IQOO/threadResource/20241002/eff83e4fbe3149e48d2d508b458e92bf_w706_h393.jpg" alt="Admino">
+                        <a href="admino.html"><img src="https://in-exstatic-vivofs.vivo.com/bCy1HLzT9bUXp6Mb/IN-IQOO/threadResource/20241002/eff83e4fbe3149e48d2d508b458e92bf_w706_h393.jpg" alt="Admino"></a>
                         <div class="player-name">Admino</div>
                     </div>
                     <div class="player-card">
-                        <img src="https://img.gurugamer.com/resize/1200x-/2020/06/11/image-2-scout-pubg-id-a9bd.png" alt="Scout">
+                        <a href="scout.html"><img src="https://img.gurugamer.com/resize/1200x-/2020/06/11/image-2-scout-pubg-id-a9bd.png" alt="Scout"></a>
                         <div class="player-name">Scout</div>
                     </div>
                     <div class="player-card">
-                        <img src="https://images.rooter.gg/rooter-profile-images/prod-2007680789-1662287440963/xhdpi.webp" alt="Goblin">
-                        <div class="player-name">Goblin</div>
+                        <a href="rosemary.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYFoH0PametdesSEY91Nx2UzVvum5Mnl-l9A&s" alt="Rosemary"></a>
+                        <div class="player-name">Rosemary</div>
                     </div>
                     <div class="player-card">
-                        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTRAZhmlWc69N9Gd-OY7oBB1-A4plTI57IxNshlBHUZKpqHwuSd" alt="ParaBoy">
+                        <a href="paraboy.html"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTRAZhmlWc69N9Gd-OY7oBB1-A4plTI57IxNshlBHUZKpqHwuSd" alt="ParaBoy"></a>
                         <div class="player-name">ParaBoy</div>
                     </div>
-                    
                 </div>
             </div>
             
@@ -86,23 +99,23 @@
                 <h2>🏆 Top Invited Teams</h2>
                 <div class="spotlight-grid team-grid">
                     <div class="team-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq5MflN2OjPFufr_BFlolEP4FFZGtLaWQVrw&s" alt="Godlike Esports Logo">
+                        <a href="godlike.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq5MflN2OjPFufr_BFlolEP4FFZGtLaWQVrw&s" alt="Godlike Esports Logo"></a>
                         <div class="team-name">Godlike Esports</div>
                     </div>
                     <div class="team-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_h-OlJzmVt4jTRK0FbWzpoFyvvY5wpSKhxg&s" alt="Team Soul Logo">
+                        <a href="soul.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_h-OlJzmVt4jTRK0FbWzpoFyvvY5wpSKhxg&s" alt="Team Soul Logo"></a>
                         <div class="team-name">Soul Esports</div>
                     </div>
                     <div class="team-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1dTh-ZfKAJDuOagR66RM9ii1mZmzz0k_0GA&s" alt="OG Logo">
+                        <a href="og.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1dTh-ZfKAJDuOagR66RM9ii1mZmzz0k_0GA&s" alt="OG Logo"></a>
                         <div class="team-name">OG Esports</div>
                     </div>
                      <div class="team-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbQSFgu2r0VukAEfAkARcxp8c4tT6VZGGryQ&s" alt="XSparkLogo">
+                        <a href="xspark.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbQSFgu2r0VukAEfAkARcxp8c4tT6VZGGryQ&s" alt="XSparkLogo"></a>
                         <div class="team-name">XSpark Esports</div>
                     </div>
                     <div class="team-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYdpeNjXbzQynAulrLh-PUUX8vcE15neobZw&s" alt="Gladiators Logo">
+                        <a href="nova.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYdpeNjXbzQynAulrLh-PUUX8vcE15neobZw&s" alt="Gladiators Logo"></a>
                         <div class="team-name">Nova Esports</div>
                     </div>
                 </div>
@@ -138,7 +151,7 @@
     </main>
     
     <footer>
-        <p>© 2025 Neon Cup Esports | All Rights Reserved.</p>
+        <p>© 2026 Neon Cup Esports | All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
