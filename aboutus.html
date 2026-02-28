@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Neon Cup 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #05050a;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: 100px auto 50px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .about-container h1 {
+            font-size: 3rem;
+            color: #00ffcc;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+        }
+
+        .project-description {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+            color: #ccc;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 204, 0.2);
+        }
+
+        .creators-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .creator-card {
+            background: rgba(10, 10, 15, 0.9);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            border-radius: 20px;
+            padding: 40px 20px;
+            width: 320px;
+            transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .creator-card:hover {
+            transform: translateY(-15px);
+            border-color: #00ffcc;
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.3);
+        }
+
+        .creator-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid #00ffcc;
+            margin-bottom: 25px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+        }
+
+        .creator-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .creator-card p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            min-height: 80px;
+        }
+
+        .insta-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 2px solid #00ffcc;
+            color: #00ffcc;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .insta-btn:hover {
+            background: #00ffcc;
+            color: #000;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+
+        .back-home {
+            margin-top: 50px;
+            display: inline-block;
+            color: #777;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .back-home:hover {
+            color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">NEON CUP</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html" style="color:#00ffcc">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="about-container">
+        <h1>ABOUT NEON CUP</h1>
+        
+        <div class="project-description">
+            <p>Neon Cup 2026 is a cutting-edge full-stack tournament management system designed to revolutionize the e-sports experience. By combining high-speed FastAPI backends with the real-time capabilities of Supabase, we've created a platform that handles registrations, player data, and tournament schedules with zero friction.</p>
+        </div>
+
+        <div class="creators-grid">
+            <div class="creator-card">
+                <img src="https://via.placeholder.com/160" alt="Mohi Shaikh" class="creator-photo">
+                <h3>Mohi Shaikh</h3>
+                <p>Lead Backend Developer & Database Architect. CS Student at SPPU. Expert in Python/FastAPI and building robust data pipelines.</p>
+                <a href="https://www.instagram.com/muhyi.0017?igsh=bDVxamtxcXlnczlz" target="_blank" class="insta-btn">Instagram</a>
+            </div>
+
+            <div class="creator-card">
+                <img src="https://via.placeholder.com/160" alt="Khalid Nadaf" class="creator-photo">
+                <h3>Khalid Nadaf</h3>
+                <p>Lead Frontend Designer & UI Specialist. CS Student at SPPU. Focused on creating immersive, high-performance web experiences.</p>
+                <a href="https://www.instagram.com/khalidddd.07?igsh=ajBrbTc3ZGsyOXVt" target="_blank" class="insta-btn">Instagram</a>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-home">← Back to Main Page</a>
+    </div>
+
+    <footer style="text-align: center; padding: 30px; opacity: 0.5;">
+        <p>© 2026 Neon Cup Esports | Built by Mohi & Khalid</p>
+    </footer>
+
+</body>
+</html>
