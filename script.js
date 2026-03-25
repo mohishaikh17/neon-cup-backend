@@ -83,37 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =================================================================
-    // 🔑 LOGIN LOGIC (login.html)
+    // 🔑 LOGIN LOGIC 
+    // MOVED: Login logic is now handled natively inside login.html 
+    // to properly route Super Admins vs Regular Players.
     // =================================================================
 
-    const loginForm = document.getElementById('loginForm');
-    if (loginForm) {
-        loginForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            try {
-                const response = await fetch(`${API_URL}/login`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    alert(`✅ Welcome back, ${result.user.username}!`);
-                    sessionStorage.setItem('loggedInUser', JSON.stringify(result.user));
-                    window.location.href = 'dashboard.html';
-                } else {
-                    alert('❌ Invalid email or password.');
-                }
-            } catch (error) {
-                alert("Server connection error.");
-            }
-        });
-    }
 
     // =================================================================
     // 🚪 LOGOUT LOGIC
@@ -123,6 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
             sessionStorage.removeItem('loggedInUser');
+            // Also clear localStorage just in case we used it for admin routing
+            localStorage.clear(); 
             alert('You have been logged out.');
             window.location.href = 'index.html';
         });
@@ -170,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const tournamentCountdown = document.getElementById('tournamentCountdown');
     if (tournamentCountdown) {
-        // Updated to 2026 so it shows as OPEN
         const countDownDate = new Date("Oct 25, 2026 00:00:00").getTime();
         const x = setInterval(function() {
             const now = new Date().getTime();
