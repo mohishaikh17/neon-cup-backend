@@ -65,10 +65,8 @@
                 // If the backend returns a successful response
                 if (response.ok && result.message.includes("Successful")) {
                     
-                    // 1. Save user info to localStorage
-                    localStorage.setItem("userEmail", result.user.email);
-                    localStorage.setItem("userName", result.user.username);
-                    localStorage.setItem("userRole", result.user.role);
+                    // 1. FIX: Save the entire user object to sessionStorage so script.js can find it!
+                    sessionStorage.setItem("loggedInUser", JSON.stringify(result.user));
 
                     // 2. The Magic Redirect
                     if (result.user.role === "admin") {
