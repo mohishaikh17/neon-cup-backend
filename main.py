@@ -19,9 +19,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Connect to Supabase
+# Connect to Supabase with Crash-Proof Error Logging
 url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")
+
+if not url or not key:
+    print("=======================================================")
+    print("💥 CRITICAL ERROR: MISSING SUPABASE VARIABLES! 💥")
+    print("You must add SUPABASE_URL and SUPABASE_KEY to the 'Environment' tab in Render!")
+    print("=======================================================")
+else:
+    print("✅ Supabase keys found! Attempting connection...")
+    
 supabase: Client = create_client(url, key)
 
 @app.get("/")
