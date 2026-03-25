@@ -41,20 +41,43 @@ async def register_user(user_data: dict):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-# 2. LOGIN ENDPOINT
+# ---------------------------------------------------------
+# Admin Credentials for hardcoded Super Admin access
+# ---------------------------------------------------------
+ADMIN_EMAIL = "admin@neoncup.com"
+ADMIN_PASSWORD = "Admin@2026"
+
+# 2. LOGIN ENDPOINT (UPDATED WITH ADMIN CHECK)
 @app.post("/login")
 async def login(credentials: dict):
+    email = credentials.get("email")
+    password = credentials.get("password")
+
+    # Step A: Check if it is the Super Admin logging in
+    if email == ADMIN_EMAIL and password == ADMIN_PASSWORD:
+        return {
+            "message": "Admin Login Successful", 
+            "user": {
+                "username": "Neon Admin",
+                "email": ADMIN_EMAIL,
+                "role": "admin" # We pass this role so the frontend knows what to do
+            }
+        }
+
+    # Step B: If not admin, check Supabase for a regular player
     try:
         response = supabase.table("profiles").select("*") \
-            .eq("email", credentials["email"]) \
-            .eq("password", credentials["password"]) \
+            .eq("email", email) \
+            .eq("password", password) \
             .execute()
         
         if len(response.data) > 0:
             user = response.data[0]
+            user["role"] = "player" # Tag regular users as players
             return {"message": "Login Successful", "user": user}
         else:
             raise HTTPException(status_code=401, detail="Invalid email or password")
+            
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
