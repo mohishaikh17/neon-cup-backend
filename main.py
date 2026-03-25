@@ -9,7 +9,7 @@ load_dotenv()
 
 app = FastAPI()
 
-# IMPORTANT: This allows your HTML files (on GitHub Pages or Netlify) 
+# IMPORTANT: This allows your HTML files (on GitHub Pages, Netlify, or Vercel) 
 # to talk to your Render backend without being blocked.
 app.add_middleware(
     CORSMiddleware,
@@ -83,3 +83,17 @@ async def join_tournament(team_data: dict):
         return {"message": "Joined Successfully", "data": response.data}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+# ---------------------------------------------------------
+# 5. ADMIN ENDPOINT: Get all tournament entries
+# ---------------------------------------------------------
+@app.get("/api/admin/registrations")
+async def get_all_registrations():
+    try:
+        # We use select("*") to grab all data from the tournament_registrations table
+        # This will include team_name, user_email, leader_id, and any other columns you have.
+        response = supabase.table("tournament_registrations").select("*").execute()
+        
+        return {"success": True, "data": response.data}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
