@@ -127,7 +127,7 @@
 
     <header>
         <a href="#" class="logo">NEON CUP | ADMIN</a>
-        <a href="index.html" class="logout-btn">Secure Logout</a>
+        <a href="#" id="logoutBtn" class="logout-btn">Secure Logout</a>
     </header>
 
     <div class="admin-container">
@@ -139,7 +139,6 @@
                     <tr>
                         <th>Team Name</th>
                         <th>Leader In-Game ID</th>
-                        <th>Leader Username</th>
                         <th>Email</th>
                         <th>Contact Phone</th>
                         <th>Status</th>
@@ -147,7 +146,7 @@
                 </thead>
                 <tbody id="admin-table-body">
                     <tr>
-                        <td colspan="6" class="loading">Fetching secure database records...</td>
+                        <td colspan="5" class="loading">Fetching secure database records...</td>
                     </tr>
                 </tbody>
             </table>
@@ -155,8 +154,8 @@
     </div>
 
     <script>
-        // Replace with your actual deployed Render API URL
-        const API_URL = "https://your-backend-url.onrender.com/api/admin/registrations";
+        // FIXED: Pointing directly to your live Render backend
+        const API_URL = "https://neon-cup-backend.onrender.com/api/admin/registrations";
 
         async function fetchAdminData() {
             try {
@@ -168,33 +167,39 @@
 
                 if (result.success && result.data.length > 0) {
                     result.data.forEach(entry => {
-                        // Extract joined profile data securely
-                        const leaderUsername = entry.profiles ? entry.profiles.username : 'N/A';
-                        const leaderEmail = entry.profiles ? entry.profiles.email : 'N/A';
-
                         const tr = document.createElement('tr');
+                        
+                        // Mapping to the exact columns in your tournament_registrations table
                         tr.innerHTML = `
-                            <td style="font-weight: bold;">${entry.team_name}</td>
-                            <td>${entry.player_id_ingame}</td>
-                            <td>${leaderUsername}</td>
-                            <td>${leaderEmail}</td>
-                            <td>${entry.contact_phone}</td>
-                            <td><span class="status-badge">${entry.status}</span></td>
+                            <td style="font-weight: bold; color: white;">${entry.team_name || 'N/A'}</td>
+                            <td>${entry.leader_id || 'N/A'}</td>
+                            <td>${entry.user_email || 'N/A'}</td>
+                            <td>${entry.phone || 'N/A'}</td>
+                            <td><span class="status-badge">Registered</span></td>
                         `;
                         tbody.appendChild(tr);
                     });
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">No registrations found yet.</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:20px;">No registrations found yet.</td></tr>';
                 }
             } catch (error) {
                 console.error("Error fetching admin data:", error);
                 document.getElementById('admin-table-body').innerHTML = 
-                    '<tr><td colspan="6" style="text-align:center; color:#ff4444;">Failed to connect to the database. Check API URL.</td></tr>';
+                    '<tr><td colspan="5" style="text-align:center; color:#ff4444;">Failed to connect to the database. Render server might be asleep, try refreshing.</td></tr>';
             }
         }
 
         // Run the fetch function as soon as the page loads
         window.onload = fetchAdminData;
+
+        // Secure Logout Logic for Admin
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            sessionStorage.removeItem('loggedInUser');
+            localStorage.clear(); 
+            alert('Admin session securely closed.');
+            window.location.href = 'index.html';
+        });
     </script>
 </body>
 </html>
