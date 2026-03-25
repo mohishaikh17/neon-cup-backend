@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Neon Cup 2026</title>
+    <style>
+        :root {
+            --neon-cyan: #00ffcc;
+            --dark-bg: #05050a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+        }
+
+        /* Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .logout-btn {
+            color: #ff4444;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #ff4444;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #ff4444;
+            color: white;
+            box-shadow: 0 0 15px #ff4444;
+        }
+
+        /* Dashboard Container */
+        .admin-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        /* Data Table */
+        .table-wrapper {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(0, 255, 204, 0.1);
+            color: var(--neon-cyan);
+            padding: 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--neon-cyan);
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+        }
+
+        tr:hover td {
+            background: rgba(0, 255, 204, 0.05);
+        }
+
+        .status-badge {
+            background: rgba(0, 255, 204, 0.2);
+            color: var(--neon-cyan);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border: 1px solid var(--neon-cyan);
+        }
+
+        .loading {
+            text-align: center;
+            color: #aaa;
+            padding: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">NEON CUP | ADMIN</a>
+        <a href="index.html" class="logout-btn">Secure Logout</a>
+    </header>
+
+    <div class="admin-container">
+        <h1>Command Center: Total Registrations</h1>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Team Name</th>
+                        <th>Leader In-Game ID</th>
+                        <th>Leader Username</th>
+                        <th>Email</th>
+                        <th>Contact Phone</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-table-body">
+                    <tr>
+                        <td colspan="6" class="loading">Fetching secure database records...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Replace with your actual deployed Render API URL
+        const API_URL = "https://your-backend-url.onrender.com/api/admin/registrations";
+
+        async function fetchAdminData() {
+            try {
+                const response = await fetch(API_URL);
+                const result = await response.json();
+
+                const tbody = document.getElementById('admin-table-body');
+                tbody.innerHTML = ''; // Clear loading text
+
+                if (result.success && result.data.length > 0) {
+                    result.data.forEach(entry => {
+                        // Extract joined profile data securely
+                        const leaderUsername = entry.profiles ? entry.profiles.username : 'N/A';
+                        const leaderEmail = entry.profiles ? entry.profiles.email : 'N/A';
+
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td style="font-weight: bold;">${entry.team_name}</td>
+                            <td>${entry.player_id_ingame}</td>
+                            <td>${leaderUsername}</td>
+                            <td>${leaderEmail}</td>
+                            <td>${entry.contact_phone}</td>
+                            <td><span class="status-badge">${entry.status}</span></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">No registrations found yet.</td></tr>';
+                }
+            } catch (error) {
+                console.error("Error fetching admin data:", error);
+                document.getElementById('admin-table-body').innerHTML = 
+                    '<tr><td colspan="6" style="text-align:center; color:#ff4444;">Failed to connect to the database. Check API URL.</td></tr>';
+            }
+        }
+
+        // Run the fetch function as soon as the page loads
+        window.onload = fetchAdminData;
+    </script>
+</body>
+</html>
